@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Ceaser{
     private static String text;
     private static int KEY = 5;
-    private static boolean isEncrypting;
 
     // This function is doing the main work.
     // Just focus on this.
@@ -44,48 +43,15 @@ public class Ceaser{
         return encryptedText.toString();
     }
 
-    public static void main(String[] params){
+    public static void main(String params[]){
+        System.out.println("Enter text: ");
         Scanner sc = new Scanner(System.in);
-        while(true){
-            System.out.print("Enter text to encrypt/decrypt ('q' to quit): ");
-            text = sc.nextLine();
-            if( text.equals("") ) continue ;
-            if( text.toLowerCase().equals("q") ) break;
-            action:
-            while(true){
-                System.out.print("\nWhat do you want to do ?\n(E) ncrypt.\n(D) ecrypt.\nTry (A) nother text.\n(Q) uit.\nEnter an option: ");
-                String sh = sc.nextLine();
-                switch(sh.toLowerCase()){
-                    case "e":
-                        isEncrypting = true;
-                        break;
-                    case "d":
-                        isEncrypting = false;
-                        break;
-                    case "a":
-                        break action;
-                    case "q":
-                        System.exit(0);
-                    default:
-                        continue;
-                }
-                while(true){
-                    System.out.print("\nEnter the amount you want shift. The default is 5.\nUse negetive number to change direction or decrypt.\nShift amount: ");
-                    sh = sc.nextLine();
-                    if(sh.equals("")) break;
-                    try{
-                        KEY = Integer.parseInt(sh);
-                        break;
-                    }
-                    catch(Exception e){
-                        System.out.print("\nShift amount should be a valid integer number.");
-                        continue;
-                    }
-                }
-                text = doCeaser(isEncrypting);
-                System.out.println(text);
-            }
-        }
+        text = sc.nextLine();
+        System.out.println("Plain text: "+text);
+        text = doCeaser(true);
+        System.out.println("Encrypted text: "+text);
+        text = doCeaser(false);
+        System.out.println("Decrypted text: "+text);
         sc.close();
     }
 }
