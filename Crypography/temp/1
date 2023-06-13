@@ -1,0 +1,2 @@
+open("2"): No such file or directory
+termux-elf-cleaner: Replacing unsupported DF_1_* flags 134217729 with 1 in 'mono'
